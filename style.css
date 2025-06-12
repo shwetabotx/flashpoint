@@ -20,30 +20,74 @@ header {
   top: 0;
   z-index: 100;
 }
+
 header .logo {
   height: 50px;
 }
+
+/* Navigation styles */
 header nav ul {
-  display: flex;
   list-style: none;
+  display: flex;
+  gap: 20px;
   margin: 0;
   padding: 0;
 }
-header nav li {
-  margin-left: 20px;
-}
-header nav li a {
-  color: #fff;
+
+header nav ul li a {
   text-decoration: none;
-  font-weight: bold;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
-header button#nav-toggle {
+
+header nav ul li a:hover {
+  color: #ffd8d5; /* Soft hover effect */
+}
+
+/* Hamburger menu button */
+#nav-toggle {
   display: none;
+  font-size: 1.5rem;
   background: none;
   border: none;
-  font-size: 1.5em;
-  color: #fff;
+  color: white;
+  cursor: pointer;
 }
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  header nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background: #333;
+    top: 60px;
+    right: 10px;
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  header nav ul.open {
+    display: flex;
+  }
+
+  #nav-toggle {
+    display: block;
+  }
+
+  header nav ul li {
+    margin: 10px 0;
+  }
+
+  header nav ul li a {
+    font-size: 1rem;
+  }
+}
+
+
 
 
 /* Hero Section */
@@ -123,11 +167,11 @@ header button#nav-toggle {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
+
 
 .service-card {
   background: #fff;
