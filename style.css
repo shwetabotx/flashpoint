@@ -96,25 +96,28 @@ header nav ul li a:hover {
   #hero {
     height: 50vh;
   }
+
   .hero-content h1 {
     font-size: 2em;
   }
+
   .hero-content p {
     font-size: 1em;
   }
 
   header {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   header nav ul {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;  /* Align to the right */
     gap: 10px;
     background: #c0392b;
-    padding: 10px 0;
+    padding: 10px 20px;
     width: 100%;
-    align-items: center; /* Centered nav links */
   }
 
   header nav ul li {
@@ -126,13 +129,16 @@ header nav ul li a:hover {
   }
 }
 
+
 @media (max-width: 480px) {
   #hero {
     height: 45vh;
   }
+
   .hero-content h1 {
     font-size: 1.6em;
   }
+
   .hero-content p {
     font-size: 0.95em;
   }
@@ -195,8 +201,11 @@ header nav ul li a:hover {
   display: none;
   position: fixed;
   z-index: 999;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.6);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
   padding: 1rem;
@@ -222,18 +231,26 @@ header nav ul li a:hover {
 }
 
 @keyframes fadeIn {
-  from {opacity: 0; transform: translateY(-20px);}
-  to {opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* About Section */
 #about {
   padding: 60px 20px;
 }
+
 #about h2 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 #about p {
   max-width: 800px;
   margin: 0 auto;
@@ -244,28 +261,34 @@ header nav ul li a:hover {
   padding: 60px 20px;
   background: #f1f1f1;
 }
+
 #contact h2 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .contact-info {
   max-width: 600px;
   margin: 0 auto 20px auto;
 }
+
 .contact-info p {
   margin: 5px 0;
 }
+
 #contact form {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
+
 #contact label {
   margin-bottom: 5px;
   font-weight: bold;
 }
-#contact input, 
+
+#contact input,
 #contact textarea {
   padding: 10px;
   margin-bottom: 15px;
@@ -273,6 +296,7 @@ header nav ul li a:hover {
   border-radius: 4px;
   font-family: inherit;
 }
+
 #contact button {
   padding: 10px;
   border: none;
@@ -282,6 +306,7 @@ header nav ul li a:hover {
   cursor: pointer;
   border-radius: 4px;
 }
+
 #contact button:hover {
   background: #e74c3c;
 }
