@@ -1,5 +1,4 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Animate hero text on load
   const heroText = document.querySelector('.hero-content');
   if (heroText) {
@@ -8,39 +7,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100); // slight delay
   }
 
-  // Toggle mobile navigation
-  const navToggle = document.getElementById('nav-toggle');
-  const navMenu = document.querySelector('header nav ul');
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-    });
-  }
+  
 
-  // Basic form validation on submit
+  // Replace form submission with mailto
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent actual form submit
+
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
-      if (name === '' || email === '' || message === '') {
+
+      if (!name || !email || !message) {
         alert('Please fill in all fields.');
-      } else {
-        alert('Thank you for contacting us, ' + name + '!');
-        contactForm.reset();
+        return;
       }
+
+      const subject = encodeURIComponent('New Client Enquiry');
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`
+      );
+
+      const mailtoLink = `mailto:fpfsolution@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+
+      // Optional: Reset the form
+      contactForm.reset();
     });
   }
-});
-document.addEventListener('DOMContentLoaded', function () {
+
+  // Modals for "Learn More" links
   const learnMoreLinks = document.querySelectorAll('.learn-more');
   const modals = document.querySelectorAll('.modal');
   const closes = document.querySelectorAll('.modal .close');
 
-  learnMoreLinks.forEach(link => {
-    link.addEventListener('click', e => {
+  learnMoreLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
       const modalId = link.getAttribute('data-modal');
       const modal = document.getElementById(modalId);
@@ -48,19 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  closes.forEach(closeBtn => {
+  closes.forEach((closeBtn) => {
     closeBtn.addEventListener('click', () => {
       closeBtn.closest('.modal').style.display = 'none';
     });
   });
 
-  // Close modal on outside click
-  window.addEventListener('click', e => {
-    modals.forEach(modal => {
+  window.addEventListener('click', (e) => {
+    modals.forEach((modal) => {
       if (e.target === modal) {
         modal.style.display = 'none';
       }
     });
   });
 });
-
